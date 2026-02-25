@@ -2,6 +2,9 @@ package com.karlsson.entity;
 
 import jakarta.persistence.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Entity
 @Table(name = "members")
 public class Member {
@@ -17,6 +20,12 @@ public class Member {
     @Column(nullable = false, length = 120, unique = true)
     private String email;
 
+    @OneToMany(mappedBy = "member",
+        fetch = FetchType.LAZY,
+        cascade = CascadeType.ALL,
+        orphanRemoval = true)
+    private List<Rental> rentals = new ArrayList<>();
+
     protected Member() {}
 
     public Member(String name, String email) {
@@ -24,7 +33,13 @@ public class Member {
         this.email = email;
     }
 
+
     public Long getId() {return memberId;}
     public String getName() {return name;}
     public String getEmail() {return email;}
+    public List<Rental> getRentals() {return rentals;}
+
+    public void addRental(Rental rental) {
+        rentals.add(rental);
+    }
 }

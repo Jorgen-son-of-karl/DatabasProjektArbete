@@ -1,9 +1,6 @@
 package com.karlsson.util;
 
-import com.karlsson.entity.AudioEquipment;
-import com.karlsson.entity.Instrument;
-import com.karlsson.entity.Member;
-import com.karlsson.entity.Rental;
+import com.karlsson.entity.*;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
@@ -51,7 +48,7 @@ public final class HibernateUtil {
 
             Configuration configuration = new Configuration();
             configuration.setProperties(properties);
-
+            configuration.addAnnotatedClass(Accessory.class);
             configuration.addAnnotatedClass(Rental.class);
             configuration.addAnnotatedClass(AudioEquipment.class);
             configuration.addAnnotatedClass(Instrument.class);
