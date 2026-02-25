@@ -34,7 +34,7 @@ public class MemberRepositoryImpl implements MemberRepository {
         } catch (Exception e) {
             if (tx != null) tx.rollback();
             throw new EntitySaveException(
-                    "Medlem kunde ej uppdateras: " + member.getClass().getSimpleName()
+                    "Member could not be updated: " + member.getClass().getSimpleName()
             );
         }
     }

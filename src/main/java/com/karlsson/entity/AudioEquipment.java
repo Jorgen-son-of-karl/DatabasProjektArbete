@@ -8,10 +8,13 @@ public class AudioEquipment {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    @Column(name = "audio_equip_id")
+    private Long audioEquipmentId;
 
+
+    @Enumerated(EnumType.STRING)
     @Column(name = "category", nullable = false,  length = 50)
-    private String category;
+    private Category category;
 
     @Column(name = "brand", nullable = false,  length = 50)
     private String brand;
@@ -25,24 +28,35 @@ public class AudioEquipment {
 
     protected AudioEquipment() {}
 
-    public AudioEquipment(Long id, String name, String category, String brand, String model, double pricePerDay) {
-        this.id = id;
+    public AudioEquipment(Category category, String brand, String model, double pricePerDay) {
         this.category = category;
         this.brand = brand;
         this.model = model;
         this.pricePerDay = pricePerDay;
     }
+    
+    public enum Category {
+        AMPLIFIER ("Amplifier"),
+        SPEAKER ("Speaker"),
+        MIXING_TABLE("Mixing table");
+
+        private final String value;
+
+        Category(String value) {
+            this.value = value;
+        }
+    }
 
     public Long getId() {
-        return id;
+        return audioEquipmentId;
     }
 
 
-    public String getCategory() {
+    public Category getCategory() {
         return category;
     }
 
-    public void setCategory(String category) {
+    public void setCategory(Category category) {
         this.category = category;
     }
 
