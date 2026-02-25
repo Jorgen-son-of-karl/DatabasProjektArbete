@@ -8,7 +8,8 @@ public class Member {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    @Column(name ="member_id")
+    private Long memberId;
 
     @Column(nullable = false, length = 120)
     private String name;
@@ -23,7 +24,7 @@ public class Member {
         this.email = email;
     }
 
-    public Long getId() {return id;}
+    public Long getId() {return memberId;}
     public String getName() {return name;}
     public String getEmail() {return email;}
 }
