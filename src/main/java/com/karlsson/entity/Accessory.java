@@ -25,7 +25,7 @@ public class Accessory {
     private double pricePerDay;
 
     protected Accessory() {}
-    
+
     public Accessory(AccessoryType accessoryType, String brand, String model, double pricePerDay) {
         this.accessoryType = accessoryType;
         this.brand = brand;
