@@ -1,6 +1,9 @@
-package com.wigell.util;
+package com.karlsson.util;
 
-import com.wigell.entity.Member;
+import com.karlsson.entity.AudioEquipment;
+import com.karlsson.entity.Instrument;
+import com.karlsson.entity.Member;
+import com.karlsson.entity.Rental;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
@@ -49,11 +52,9 @@ public final class HibernateUtil {
             Configuration configuration = new Configuration();
             configuration.setProperties(properties);
 
-//            configuration.addAnnotatedClass(Movie.class);
-//            configuration.addAnnotatedClass(MovieDetails.class);
-//            configuration.addAnnotatedClass(Show.class);
-//            configuration.addAnnotatedClass(Booking.class);
-//            configuration.addAnnotatedClass(Ticket.class);
+            configuration.addAnnotatedClass(Rental.class);
+            configuration.addAnnotatedClass(AudioEquipment.class);
+            configuration.addAnnotatedClass(Instrument.class);
             configuration.addAnnotatedClass(Member.class);
 
             ServiceRegistry serviceRegistry =

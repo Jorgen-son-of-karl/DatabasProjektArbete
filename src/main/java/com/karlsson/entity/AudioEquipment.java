@@ -1,4 +1,4 @@
-package com.wigell.entity;
+package com.karlsson.entity;
 
 import jakarta.persistence.*;
 
@@ -36,7 +36,7 @@ public class AudioEquipment {
     public Long getId() {
         return id;
     }
-    
+
 
     public String getCategory() {
         return category;
