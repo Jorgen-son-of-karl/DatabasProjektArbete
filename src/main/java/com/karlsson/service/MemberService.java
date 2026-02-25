@@ -1,7 +1,7 @@
-package com.wigell.service;
+package com.karlsson.service;
 
-import com.wigell.entity.Member;
-import com.wigell.repo.MemberRepository;
+import com.karlsson.entity.Member;
+import com.karlsson.repo.MemberRepository;
 
 public class MemberService {
 

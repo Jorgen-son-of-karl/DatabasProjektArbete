@@ -1,4 +1,4 @@
-package com.wigell.entity;
+package com.karlsson.entity;
 
 import jakarta.persistence.*;
 
