@@ -16,7 +16,7 @@ public class MemberRepositoryImpl implements MemberRepository {
 
     @Override
     public void save(Member member) {
-        try (Session session = sessionFactory.openSession()) {
+        try (Session session = this.sessionFactory.openSession()) {
             var tx = session.beginTransaction();
             session.persist(member);
             tx.commit();
@@ -27,7 +27,7 @@ public class MemberRepositoryImpl implements MemberRepository {
     public void update(Member member) {
 
         Transaction tx = null;
-        try (Session session = sessionFactory.openSession()) {
+        try (Session session = this.sessionFactory.openSession()) {
             tx = session.beginTransaction();
             session.merge(member);
             tx.commit();
@@ -41,16 +41,28 @@ public class MemberRepositoryImpl implements MemberRepository {
 
     @Override
     public void delete(Member member) {
-
+        Transaction tx = null;
+        try (Session session = this.sessionFactory.openSession()) {
+            tx = session.beginTransaction();
+            session.delete(member);
+            tx.commit();
+        }
+        catch (Exception e) {
+            if (tx != null) tx.rollback();
+        }
     }
 
     @Override
-    public Member findById(int id) {
-        return null;
+    public Member findById(Long id) {
+        try (Session session = this.sessionFactory.openSession()) {
+            return session.get(Member.class, id);
+        }
     }
 
     @Override
     public List<Member> findAll() {
-        return List.of();
+        try (Session session = this.sessionFactory.openSession()) {
+            return session.createQuery("from Member", Member.class).list();
+        }
     }
 }

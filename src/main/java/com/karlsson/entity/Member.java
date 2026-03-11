@@ -34,12 +34,45 @@ public class Member {
     }
 
 
-    public Long getId() {return memberId;}
-    public String getName() {return name;}
-    public String getEmail() {return email;}
-    public List<Rental> getRentals() {return rentals;}
+    public Long getMemberId() {
+        return memberId;
+    }
+
+    public List<Rental> getRentals() {
+        return rentals;
+    }
+
+    public void setRentals(List<Rental> rentals) {
+        this.rentals = rentals;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
 
     public void addRental(Rental rental) {
         rentals.add(rental);
+    }
+
+    @Override
+    public String toString() {
+        return "Member{" +
+                "memberId=" + memberId +
+                ", name='" + name + '\'' +
+                ", email='" + email + '\'' +
+                ", rentals=" + rentals +
+                '}';
     }
 }

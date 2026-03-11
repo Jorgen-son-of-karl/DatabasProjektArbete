@@ -9,6 +9,6 @@ public interface MemberRepository {
     void save(Member member);
     void update(Member member);
     void delete(Member member);
-    Member findById(int id);
+    Member findById(Long id);
     List<Member> findAll();
 }
