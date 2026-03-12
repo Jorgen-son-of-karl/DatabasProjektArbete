@@ -1,8 +1,11 @@
 package com.karlsson;
 
 import com.karlsson.entity.Member;
+import com.karlsson.repo.InstrumentRepository;
+import com.karlsson.repo.InstrumentRepositoryImpl;
 import com.karlsson.repo.MemberRepository;
 import com.karlsson.repo.MemberRepositoryImpl;
+import com.karlsson.service.InstrumentService;
 import com.karlsson.service.MemberService;
 import com.karlsson.util.HibernateUtil;
 import org.hibernate.SessionFactory;
@@ -20,8 +23,10 @@ public class Main {
 
 
         MemberRepository memberRepository = new MemberRepositoryImpl(sessionFactory);
+        InstrumentRepository instrumentRepository = new InstrumentRepositoryImpl(sessionFactory);
 
         MemberService memberService = new MemberService(memberRepository);
+        InstrumentService instrumentService = new InstrumentService(instrumentRepository);
         System.out.println("Hibernate started!");
 
 
@@ -35,6 +40,8 @@ public class Main {
         System.out.println("2. Create a new member");
         System.out.println("3. Update existing member");
         System.out.println("4. Delete existing member");
+            System.out.println("5. List all instruments");
+            System.out.println("6. Add a new instrument to stock");
         Scanner userInput = new Scanner(System.in);
 
             switch (userInput.nextInt()) {
@@ -44,14 +51,18 @@ public class Main {
                 case 2:
                     memberService.createMember(userInput);
                     break;
-
                 case 3:
                     memberService.updateMember(userInput);
                     break;
                 case 4:
                     memberService.deleteMember(userInput);
                     break;
-
+                case 5:
+                    instrumentService.listAllInstruments();
+                    break;
+                    case 6:
+                        instrumentService.createInstrument(userInput);
+                        break;
             }
         }
     }
