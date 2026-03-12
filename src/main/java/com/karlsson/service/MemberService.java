@@ -47,7 +47,9 @@ public class MemberService {
         userInput.nextLine();
         System.out.println("Which member would you like to update?");
         Member member = chooseMemberFromList(userInput);
+
         //TODO logic for choosing which field to update
+
         System.out.println("Please enter new full name: ");
         String name = userInput.nextLine();
         member.setName(name);

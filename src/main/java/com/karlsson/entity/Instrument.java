@@ -26,12 +26,6 @@ public class Instrument {
 
     protected Instrument() {}
 
-    public Instrument(String name, Type type, String brand, double pricePerDay) {
-        this.name = name;
-        this.type = type;
-        this.brand = brand;
-        this.pricePerDay = pricePerDay;
-    }
 
     public enum Type{
         GUITAR ("Guitar"),
