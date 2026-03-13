@@ -24,6 +24,13 @@ public class Instrument {
     @Column(name="price_per_day", nullable = false)
     private double pricePerDay;
 
+    public Instrument(String name, Type type, String brand, double pricePerDay) {
+        this.name = name;
+        this.type = type;
+        this.brand = brand;
+        this.pricePerDay = pricePerDay;
+    }
+
     protected Instrument() {}
 
 
@@ -39,15 +46,43 @@ public class Instrument {
         }
     }
 
-    public Long getId() { return instrumentId; }
+    public Long getInstrumentId() {
+        return instrumentId;
+    }
 
-    public String getName() { return name; }
+    public void setInstrumentId(Long instrumentId) {
+        this.instrumentId = instrumentId;
+    }
 
-    public Type getType() { return type; }
+    public String getName() {
+        return name;
+    }
 
-    public String getBrand() { return brand; }
+    public void setName(String name) {
+        this.name = name;
+    }
 
-    public double getPricePerDay() { return pricePerDay; }
+    public Type getType() {
+        return type;
+    }
 
+    public void setType(Type type) {
+        this.type = type;
+    }
 
+    public String getBrand() {
+        return brand;
+    }
+
+    public void setBrand(String brand) {
+        this.brand = brand;
+    }
+
+    public double getPricePerDay() {
+        return pricePerDay;
+    }
+
+    public void setPricePerDay(double pricePerDay) {
+        this.pricePerDay = pricePerDay;
+    }
 }
